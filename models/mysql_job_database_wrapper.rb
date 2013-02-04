@@ -1,7 +1,7 @@
 require 'stringio'
 
 class MysqlJobDatabaseWrapper < Jenkins::Tasks::BuildWrapper
-  display_name "Create a MySQL databse for the job"
+  display_name "Create a MySQL database for the job"
 
   attr_reader :jenkins_mysql_user, :jenkins_mysql_password
   attr_reader :database
