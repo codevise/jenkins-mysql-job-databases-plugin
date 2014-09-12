@@ -1,4 +1,4 @@
-module MysqlJobDatabaseWrapper
+module MysqlPublisher
   class DropDatabase < Jenkins::Tasks::Publisher
 
     display_name "Drop a MySQL database for the job"

@@ -1,4 +1,4 @@
-module MysqlJobDatabaseWrapper
+module MysqlBuilder
   class CreateDatabase < Jenkins::Tasks::BuildWrapper
 
     display_name "Create a MySQL database for the job"
