@@ -6,6 +6,8 @@ module MysqlPublisher
     # Global MySQL account to delete job account
     attr_reader :jenkins_mysql_user
     attr_reader :jenkins_mysql_password
+    attr_reader :mysql_server_host
+    attr_reader :mysql_server_port
 
     # Job MySQL account
     attr_reader :database
@@ -13,16 +15,13 @@ module MysqlPublisher
 
 
     def initialize(attrs)
-      @jenkins_mysql_user     = 'jenkins'
-      @jenkins_mysql_password = 'jenkins'
-
       @database       = fix_empty(attrs['database'])
       @job_mysql_user = fix_empty(attrs['job_mysql_user']) || default_job_mysql_user
     end
 
 
     def perform(build, launcher, listener)
-      mysql = MySQL.new(launcher, jenkins_mysql_user, jenkins_mysql_password)
+      mysql = get_mysql_connection(launcher)
 
       drop_database(listener, mysql)
       drop_user(listener, mysql)
@@ -30,6 +29,23 @@ module MysqlPublisher
 
 
     private
+
+
+      def get_mysql_connection(launcher)
+        get_db_config
+        MySQL.new(launcher, jenkins_mysql_user, jenkins_mysql_password, mysql_server_host, mysql_server_port)
+      end
+
+
+      def get_db_config
+        global_config = Java.jenkins.model.Jenkins.getInstance().getDescriptor(MysqlJobDatabaseWrapperDescriptor.java_class)
+
+        @jenkins_mysql_user     = fix_empty(global_config.jenkins_mysql_user) || 'jenkins'
+        @jenkins_mysql_password = fix_empty(global_config.jenkins_mysql_password) || 'jenkins'
+
+        @mysql_server_host = fix_empty(global_config.jenkins_mysql_server_host) || '127.0.0.1'
+        @mysql_server_port = fix_empty(global_config.jenkins_mysql_server_port) || '3306'
+      end
 
 
       def drop_database(listener, mysql)
