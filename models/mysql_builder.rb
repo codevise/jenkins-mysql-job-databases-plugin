@@ -43,6 +43,8 @@ module MysqlBuilder
       build.env['MYSQL_DATABASE'] = database
       build.env['MYSQL_USER']     = job_mysql_user
       build.env['MYSQL_PASSWORD'] = job_mysql_password
+      build.env['MYSQL_HOST']     = mysql_server_host
+      build.env['MYSQL_PORT']     = mysql_server_port
     rescue MySQL::Error => e
       listener << "MySQL command failed:\n\n#{e.out}"
       build.abort
@@ -64,7 +66,7 @@ module MysqlBuilder
 
 
       def get_db_config
-        global_config = Java.jenkins.model.Jenkins.getInstance().getDescriptor(MysqlJobDatabaseWrapperDescriptor.java_class)
+        global_config = Java.jenkins.model.Jenkins.getInstance().getDescriptor(MysqlGlobalConfigDescriptor.java_class)
 
         @jenkins_mysql_user     = fix_empty(global_config.jenkins_mysql_user) || 'jenkins'
         @jenkins_mysql_password = fix_empty(global_config.jenkins_mysql_password) || 'jenkins'

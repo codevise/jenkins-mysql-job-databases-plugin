@@ -1,7 +1,7 @@
 <%
   f = taglib("/lib/form")
 
-  desc = 'Environment variables available in shell build steps: $MYSQL_DATABASE, $MYSQL_USER, $MYSQL_PASSWORD.'
+  desc = 'Environment variables available in shell build steps: $MYSQL_DATABASE, $MYSQL_USER, $MYSQL_PASSWORD, $MYSQL_HOST, $MYSQL_PORT.'
 
   f.entry :title => 'Database name', :field => 'database', :description => desc do
     f.textbox

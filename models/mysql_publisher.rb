@@ -38,7 +38,7 @@ module MysqlPublisher
 
 
       def get_db_config
-        global_config = Java.jenkins.model.Jenkins.getInstance().getDescriptor(MysqlJobDatabaseWrapperDescriptor.java_class)
+        global_config = Java.jenkins.model.Jenkins.getInstance().getDescriptor(MysqlGlobalConfigDescriptor.java_class)
 
         @jenkins_mysql_user     = fix_empty(global_config.jenkins_mysql_user) || 'jenkins'
         @jenkins_mysql_password = fix_empty(global_config.jenkins_mysql_password) || 'jenkins'

@@ -23,7 +23,7 @@ class MySQL
   def execute(command)
     out = StringIO.new()
 
-    if launcher.execute("bash", "-c", "mysql -h '#{server}' -P '#{port}' -u '#{user}' -p'#{password}' --execute \"#{command}\"", {:out => out}) != 0
+    if launcher.execute("bash", "-c", "mysql --host='#{server}' --port='#{port}' --user='#{user}' --password='#{password}' --execute \"#{command}\"", {:out => out}) != 0
       raise Error.new(out.string), 'MySQL command failed'
     end
 
