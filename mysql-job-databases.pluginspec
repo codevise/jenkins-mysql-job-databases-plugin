@@ -4,9 +4,9 @@ Jenkins::Plugin::Specification.new do |plugin|
   plugin.version = '0.2.1'
   plugin.description = 'Automatically create and delete a MySQL database for a job.'
 
-  plugin.url = 'https://github.com/n-rodriguez/jenkins-mysql-job-databases-plugin'
-  plugin.developed_by 'Nicolas Rodriguez', 'nrodriguez@jbox-web.com'
-  plugin.uses_repository :github => 'n-rodriguez/jenkins-mysql-job-databases-plugin'
+  plugin.url = 'https://github.com/codevise/jenkins-mysql-job-databases-plugin'
+  plugin.developed_by 'Tim Fischbach', 'tfischbach@codevise.de'
+  plugin.uses_repository :github => 'codevise/jenkins-mysql-job-databases-plugin'
 
   plugin.depends_on 'ruby-runtime', '0.12'
 end
