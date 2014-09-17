@@ -63,8 +63,8 @@ module MysqlPublisher
 
       def drop_user(listener, mysql)
         listener << "Drop MySQL user for job if exists"
-        mysql.execute("REVOKE ALL PRIVILEGES, GRANT OPTION FROM '#{job_mysql_user}'@'localhost';")
-        mysql.execute("DROP USER '#{job_mysql_user}'@'localhost';")
+        mysql.execute("REVOKE ALL PRIVILEGES, GRANT OPTION FROM '#{job_mysql_user}'@'%';")
+        mysql.execute("DROP USER '#{job_mysql_user}'@'%';")
       rescue MySQL::Error => e
         listener << "MySQL command failed:\n\n#{e.out}"
       end

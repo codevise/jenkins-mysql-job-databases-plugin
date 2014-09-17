@@ -36,8 +36,9 @@ module MysqlBuilder
       end
 
       mysql.execute("CREATE DATABASE IF NOT EXISTS #{database};")
+
       mysql.execute("GRANT ALL ON #{database}.*" +
-                    " TO '#{job_mysql_user}'@'localhost'" +
+                    " TO '#{job_mysql_user}'@'%'" +
                     " IDENTIFIED BY '#{job_mysql_password}';")
 
       build.env['MYSQL_DATABASE'] = database
