@@ -1,0 +1,13 @@
+<%
+  f = taglib("/lib/form")
+
+  f.entry :title => 'Database name', :field => 'database' do
+    f.textbox
+  end
+
+  f.advanced do
+    f.entry :title => 'Database user name', :field => 'job_mysql_user' do
+      f.textbox
+    end
+  end
+%>

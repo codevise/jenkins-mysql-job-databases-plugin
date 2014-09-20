@@ -1,0 +1,22 @@
+<%
+  f = taglib("/lib/form")
+
+  f.section :title => 'MySQL Job Databases' do
+
+    f.entry :title => 'Jenkins Database User', :field => 'jenkins_mysql_user' do
+      f.textbox :default => "#{descriptor.jenkins_mysql_user}"
+    end
+
+    f.entry :title => 'Jenkins Database Password', :field => 'jenkins_mysql_password' do
+      f.textbox :default => "#{descriptor.jenkins_mysql_password}"
+    end
+
+    f.entry :title => 'Jenkins Database Server Host', :field => 'jenkins_mysql_server_host' do
+      f.textbox :default => "#{descriptor.jenkins_mysql_server_host}"
+    end
+
+    f.entry :title => 'Jenkins Database Server Port', :field => 'jenkins_mysql_server_port', :description => 'These credentials are used to create databases for jobs.' do
+      f.textbox :default => "#{descriptor.jenkins_mysql_server_port}"
+    end
+  end
+%>
