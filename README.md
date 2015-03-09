@@ -24,6 +24,12 @@ environment variables $MYSQL_USER and $MYSQL_PASSWORD.
 * [Tim Fischbach](https://github.com/tf) (`tfischbach@codevise.de`)
 * [Nicolas Rodriguez](https://github.com/n-rodriguez) (`nrodriguez@jbox-web.com`)
 
+## See also
+
+There is also a PostgreSQL variant of this plugin:
+
+[lmlima/jenkins-postgresql-job-databases-plugin](https://github.com/lmlima/jenkins-postgresql-job-databases-plugin)
+
 ## License
 
 Please fork and improve.
