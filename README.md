@@ -1,6 +1,6 @@
 # Jenkins MySQL Job Databases Plugin
 
-[github.com/codevise/jenkins-mysql-job-databases-plugin](http://github.com/codevise/jenkins-mysql-job-databases-plugin)
+**DEPRECATED: This plugin is no longer actively maintained. Consider using [jbox-web/job-database-manager-mysql](https://github.com/jbox-web/job-database-manager-mysql) instead.**
 
 Automatically set up test databases for Jenkins jobs.
 
